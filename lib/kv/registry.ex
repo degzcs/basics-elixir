@@ -58,12 +58,12 @@ defmodule KV.Registry do
   end
 
   def handle_info({:DOWN, ref, :process, _pid, _reason}, {names, refs}) do
-      {name, refs} = Map.pop(refs, ref)
-      names = Map.delete(names, name)
-      {:noreply, {names, refs}}
+    {name, refs} = Map.pop(refs, ref)
+    names = Map.delete(names, name)
+    {:noreply, {names, refs}}
   end
 
   def handle_info(_msg, state) do
-      {:noreply, state}
+    {:noreply, state}
   end
 end
